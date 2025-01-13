@@ -175,9 +175,6 @@ def mache_sekunden_mal_10_aus_meiner_minutenangabe(minuten):
     #notwendig, da die travel_time unter Umständen nicht ganzzahlig ist sonder eine Nachkommastelle hat
     return minuten*600
 
-def alle_permutationen(liste):
-    return [list(p) for p in itertools.permutations(liste)]
-
 
 
 #Beispielaufruf der Berechnung auf der Straßenkarte von "Charlottenburg-Wilmersdorf" in Berlin
@@ -195,17 +192,11 @@ print(lex_max_flow(G, [247078355, 936149309, 28200228, 251105127, 484245], 9000)
 
 
 
-#LISTE erfolgreicher Beispiele
+#weitere Beispielaufrufe
 
 G = ox.graph_from_place("Berlin", network_type="drive", simplify=True)
 capacities_und_weight_setzen_osm_graph(G)
-'''fig, ax = ox.plot_graph(G, edge_linewidth=3, node_size=15, show=False, close=False)
-for _, node in ox.graph_to_gdfs(G, edges=False).fillna("").iterrows():
-    text = node.name
-    c = node["geometry"].centroid
-    ax.annotate(text, (c.x, c.y), c="y")
-plt.show()
-'''
+
 G.nodes[386026173]['terminal'] = 1 #unten rechts Köpenick
 G.nodes[249812374]['terminal'] = -1 #oben links Spandau
 G.nodes[1602528344]['terminal'] = -1 #unten links Wannsee
